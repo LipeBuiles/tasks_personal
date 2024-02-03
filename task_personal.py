@@ -1,12 +1,21 @@
+import configparser
 import mysql.connector
 import pandas as pd
 
+config = configparser.ConfigParser()
+config.read('config.conf')
+
+host = config.get('mysql', 'host')
+user = config.get('mysql', 'user')
+password = config.get('mysql', 'password')
+database = config.get('mysql', 'database')
+
 # Configuración de la conexión
 db_params = {
-    "host": "",
-    "user": "",
-    "password": "",
-    "database": ""
+    "host": host,
+    "user": user,
+    "password": password,
+    "database": database
 }
 
 # Función para establecer la conexión y el cursor
