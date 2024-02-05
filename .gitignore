@@ -153,3 +153,7 @@ cython_debug/
 
 # .gitignore
 *.conf
+
+
+# Ignorar la carpeta venv/nenv
+task_personal_env/
