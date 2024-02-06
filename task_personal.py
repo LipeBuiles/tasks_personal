@@ -59,10 +59,10 @@ def imprimir_tabla_id(dataframe):
     print(dataframe.to_markdown(index=False))
 
 # Función para guardar un nuevo registro
-def guardar_registro(description, responsible, status, priority, start_day, end_date, close_date, tags):
+def guardar_registro(description, responsible, status, priority, start_date, end_date, close_date, tags):
     conn, cursor = establecer_conexion()
-    sql = "INSERT INTO task_personal (description, responsible, status, priority, start_day, end_date, close_date, tags) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-    values = (description, responsible, status, priority, start_day, end_date, close_date, tags)
+    sql = "INSERT INTO task_personal (description, responsible, status, priority, start_date, end_date, close_date, tags) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    values = (description, responsible, status, priority, start_date, end_date, close_date, tags)
     try:
         cursor.execute(sql, values)
         conn.commit()
@@ -73,10 +73,10 @@ def guardar_registro(description, responsible, status, priority, start_day, end_
         cerrar_conexion(conn, cursor)
 
 # Función para editar un registro existente
-def editar_registro(task_id, description, responsible, status, priority, start_day, end_date, close_date, tags):
+def editar_registro(task_id, description, responsible, status, priority, start_date, end_date, close_date, tags):
     conn, cursor = establecer_conexion()
-    sql = "UPDATE task_personal SET description = %s, responsible = %s, status = %s, priority = %s, start_day = %s, end_date = %s, close_date = %s, tags = %s WHERE id = %s"
-    values = (description, responsible, status, priority, start_day, end_date, close_date, tags, task_id)
+    sql = "UPDATE task_personal SET description = %s, responsible = %s, status = %s, priority = %s, start_date = %s, end_date = %s, close_date = %s, tags = %s WHERE id = %s"
+    values = (description, responsible, status, priority, start_date, end_date, close_date, tags, task_id)
     try:
         cursor.execute(sql, values)
         conn.commit()
@@ -156,11 +156,11 @@ while True:
                 print("1. Low")
                 print("2. Mid")
                 print("3. High")
-        start_day = input("Ingrese la fecha de creación de la tarea (AAAA-MM-DD): ")
+        start_date = input("Ingrese la fecha de creación de la tarea (AAAA-MM-DD): ")
         end_date = input("Ingrese la fecha de cierre de la tarea (AAAA-MM-DD): ")
         tags = input("Ingrese las etiquetas de la tarea: ")
 
-        guardar_registro(description, responsible, status, priority, start_day, end_date, None, tags)
+        guardar_registro(description, responsible, status, priority, start_date, end_date, None, tags)
         print("\n\n")
 
     elif opcion == "3":
@@ -180,7 +180,7 @@ while True:
         responsible = df.loc[0, 'responsible']
         status = df.loc[0, 'status']
         priority = df.loc[0, 'priority']
-        start_day = df.loc[0, 'start_day']
+        start_date = df.loc[0, 'start_date']
         end_date = df.loc[0, 'end_date']
         close_date = df.loc[0, 'close_date']
         tags = df.loc[0, 'tags']
@@ -209,9 +209,9 @@ while True:
         if aux_priority != "":
             priority = aux_priority
 
-        aux_start_day = input("Ingrese la fecha de creación de la tarea (AAAA-MM-DD): ")
-        if aux_start_day != "":
-            start_day = aux_start_day
+        aux_start_date = input("Ingrese la fecha de creación de la tarea (AAAA-MM-DD): ")
+        if aux_start_date != "":
+            start_date = aux_start_date
 
         aux_end_date = input("Ingrese la fecha de cierre de la tarea (AAAA-MM-DD): ")
         if aux_end_date != "":
@@ -225,7 +225,7 @@ while True:
         if aux_tags != "":
             tags = aux_tags
 
-        editar_registro(int(task_id), description, responsible, int(status), int(priority), start_day, end_date, close_date, tags)
+        editar_registro(int(task_id), description, responsible, int(status), int(priority), start_date, end_date, close_date, tags)
         print("\n\n")
 
     elif opcion == "4":
