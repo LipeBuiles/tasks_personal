@@ -2,24 +2,24 @@ import configparser
 import mysql.connector
 import pandas as pd
 
-config = configparser.ConfigParser()
-config.read('config.conf')
-
-host = config.get('mysql', 'host')
-user = config.get('mysql', 'user')
-password = config.get('mysql', 'password')
-database = config.get('mysql', 'database')
-
-# Configuración de la conexión
-db_params = {
-    "host": host,
-    "user": user,
-    "password": password,
-    "database": database
-}
-
 # Función para establecer la conexión y el cursor
 def establecer_conexion():
+    config = configparser.ConfigParser()
+    config.read('config.conf')
+
+    host = config.get('mysql', 'host')
+    user = config.get('mysql', 'user')
+    password = config.get('mysql', 'password')
+    database = config.get('mysql', 'database')
+
+    # Configuración de la conexión
+    db_params = {
+        "host": host,
+        "user": user,
+        "password": password,
+        "database": database
+    }
+
     conn = mysql.connector.connect(**db_params)
     cursor = conn.cursor()
     return conn, cursor
@@ -101,6 +101,7 @@ def eliminar_registro(task_id):
 
 # Menú
 while True:
+    print("\n\n")
     print("1. Listar registros")
     print("2. Guardar nuevo registro")
     print("3. Editar registro")
