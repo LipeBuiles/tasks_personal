@@ -17,4 +17,4 @@ python -m venv task_personal_env
 
 4. Install all libraries listed in the requirements.txt file with the specified versions.
 
-installing pip -r requirements.txt
+python -m pip install -r requirements.txt
