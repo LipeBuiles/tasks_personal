@@ -9,11 +9,11 @@ python -m pip install virtualenv
 
 2. Create a new virtual environment in your project:
 
-python -m venv task_personal_env
+python -m venv task_personal_venv
 
 3. Activate the virtual environment
 
-.\task_personal_env\Scripts\Activate
+.\task_personal_venv\Scripts\Activate
 
 4. Install all libraries listed in the requirements.txt file with the specified versions.
 

@@ -156,4 +156,4 @@ cython_debug/
 
 
 # Ignorar la carpeta venv/nenv
-task_personal_env/
+task_personal_venv/
