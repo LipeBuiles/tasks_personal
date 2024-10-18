@@ -4,7 +4,7 @@ import configparser
 
 def establish_connection():
     config = configparser.ConfigParser()
-    config.read('config.conf')
+    config.read('.env')
 
     host = config.get('mysql', 'host')
     user = config.get('mysql', 'user')
